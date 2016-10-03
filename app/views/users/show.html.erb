@@ -1,4 +1,9 @@
-<h1>
+<div id="UserShow">
   <%= gravatar_for @user %>
-  <%= @user.name %>
-</h1>
+  <% if logged_in? %>
+    <p><%= link_to "プロフィールを編集する", edit_user_path(@user) %></p>
+  <% end %>
+  <p class="profile-name"><%= @user.name %></p>
+  <p class="email"><%= @user.email %></p>
+  <p class="description"><%= @user.description %></p>
+</div>

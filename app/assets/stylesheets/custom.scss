@@ -196,3 +196,22 @@ input, textarea, select, .uneditable-input {
 input {
   height: auto !important;
 }
+
+#UserShow {
+  .profile-name {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+  .email {
+    margin-top: 0;
+    color: #8899a6;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .description {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+}
