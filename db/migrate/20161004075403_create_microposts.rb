@@ -5,6 +5,8 @@ class CreateMicroposts < ActiveRecord::Migration
       t.text :content
 
       t.timestamps null: false
+      #特定のユーザーの投稿の日付でソートして取得するためのインデックス
+      t.index [:user_id, :created_at]
     end
   end
 end
