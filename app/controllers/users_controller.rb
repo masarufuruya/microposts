@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :redirect_unlogged_user, only: [:show, :edit, :update, :create]
+  #ログインしていない場合、ユーザー表示/編集/更新は出来ないようにする
+  before_action :redirect_unlogged_user, only: [:show, :edit, :update]
   
   def new
     @user = User.new
