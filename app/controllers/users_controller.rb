@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  #ログインしていない場合、ユーザー表示/編集/更新は出来ないようにする
+  #ログインしていない場合はリダイレクト
   before_action :redirect_unlogged_user, only: [:show, :edit, :update]
+  #自分以外のユーザーが編集できないようにする
+  before_action :forbid_other_user_edit, only: [:edit, :update]
   
   def new
     @user = User.new
@@ -40,6 +42,12 @@ class UsersController < ApplicationController
   private
     def redirect_unlogged_user
       unless logged_in?
+        redirect_to root_path
+      end
+    end
+    
+    def forbid_other_user_edit
+      if current_user.id != params[:id].to_i
         redirect_to root_path
       end
     end
