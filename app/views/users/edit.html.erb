@@ -1,17 +1,31 @@
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for(:user, url: user_path, method: :patch) do |f| %>
+    <%= form_for(@user, url: user_path, method: :patch) do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
       <%= f.label :name, value: "名前" %>
       <%= f.text_field :name, class: "form-control" %>
     
       <%= f.label :email, value: "メールアドレス" %>
-      <%= f.email_field :email, class: 'form-control' %>
+      <%= f.email_field :email, class: "form-control" %>
 
       <%= f.label :description, value: "自己紹介" %>
-      <%= f.text_area :description, class: 'form-control' %>
-
-      <%= f.submit "更新する", class: "btn btn-primary" %>
+      <%= f.text_area :description, class: "form-control" %>
+      
+      <%= f.submit "プロフィールを更新する", class: "btn btn-primary" %>
     <% end %>
+    
+    <div class="mt-10">
+      <% # パスワードを入力しなくてもプロフィールを変更できることを明示するためにフォームを分けた %>
+      <%= form_for(@user, url: user_path, method: :patch) do |f| %>
+        <%= f.label :password, value: "パスワード" %>
+        <%= f.password_field :password, class: "form-control", required: "required" %>
+        
+        <%= f.label :password_confirmation, value: "確認用パスワード" %>
+        <%= f.password_field :password_confirmation, class: "form-control", required: "required" %>
+        
+        <%= f.submit "パスワードを更新する", class: "btn btn-success" %>
+      <% end %>
+    </div>
   </div>
 </div>
