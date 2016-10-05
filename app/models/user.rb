@@ -7,7 +7,9 @@ class User < ActiveRecord::Base
     validates :email, presence: true, length: { maximum: 255 },
                       format: { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
-    
+    #更新時にはhas_secure_passwordはパスワードが無くても更新出来るようになっているっぽい
+    validates :password, length: { minimum: 6 }, allow_nil: true
+    validates :description, length: { maximum: 255 }
     has_secure_password
     has_many :microposts
 
