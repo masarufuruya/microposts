@@ -10,7 +10,7 @@
       <%= f.email_field :email, class: "form-control" %>
 
       <%= f.label :description, value: "自己紹介" %>
-      <%= f.text_area :description, class: "form-control" %>
+      <%= f.text_area :description, class: "form-control", maxlength: 255, rows: "4" %>
       
       <%= f.submit "プロフィールを更新する", class: "btn btn-primary" %>
     <% end %>
