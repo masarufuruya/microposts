@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(function() {
+    $('#userTab .following').on('click', function() {
+       var id = $(this).attr('id');
+       $.get("/users/"+id+"/following_users")
+    });
+    
+    $('#userTab .follower').on('click', function() {
+       var id = $(this).attr('id');
+       $.get("/users/"+id+"/follower_users")
+    });    
+});
+

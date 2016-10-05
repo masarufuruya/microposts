@@ -10,10 +10,10 @@
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
 
-    <ul class="nav nav-tabs" style="margin-top:20px;">
+    <ul id="userTab" class="nav nav-tabs" style="margin-top:20px;">
       <li role="presentation" class="active"><a href="#tab1" data-toggle="tab">ツイート(<%= @user.microposts.count %>)</a></li>
-      <li role="presentation"><a href="#tab2" data-toggle="tab">フォロー(<%= @following_users.count %>)</a></li>
-      <li role="presentation"><a href="#tab3" data-toggle="tab">フォロワー(<%= @follower_users.count %>)</a></li>
+      <li role="presentation"><a id="<%= @user.id %>" class="following" href="#tab2" data-toggle="tab">フォロー(<%= @following_users.count %>)</a></li>
+      <li role="presentation"><a id="<%= @user.id %>" class="follower" href="#tab3" data-toggle="tab">フォロワー(<%= @follower_users.count %>)</a></li>
     </ul>    
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane fade in active" id="tab1">
@@ -28,12 +28,12 @@
         <% end %>
       </div>
       <div class="tab-pane fade" id="tab2">
-        <ol class="follow-users">
+        <ol class="following-users">
           <%= render :partial => "follow_users", :collection => @following_users, :as => "follow_user" %>
         </ol>
       </div>
       <div class="tab-pane fade" id="tab3">
-        <ol class="follow-users">
+        <ol class="follower-users">
           <%= render :partial => "follow_users", :collection => @follower_users, :as => "follow_user" %>
         </ol>
       </div>
