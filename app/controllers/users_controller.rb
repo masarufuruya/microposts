@@ -20,6 +20,19 @@ class UsersController < ApplicationController
     end
   end
   
+  #各ユーザーがフォローしているユーザー一覧を取得
+  def following_users
+    #idからフォローしているuser
+    @user = User.find(params[:id])
+    @user.following_users
+  end
+  
+  #各ユーザーがフォローされているユーザー一覧を取得
+  def follower_users
+    @user = User.find(params[:id])
+    @user.follower_users
+  end
+  
   private
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)

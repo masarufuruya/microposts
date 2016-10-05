@@ -2,7 +2,15 @@ Rails.application.routes.draw do
   get 'sessions/new'
 
   resources :microposts
-  resources :users
+  resources :users do
+    # users/1/following_users
+    # users/1/follower_users
+    member do
+      get 'following_users'
+      get 'follower_users'
+    end
+  end
+  
   resources :relationships, only: [:create, :destroy]
   
   get 'signup', to: 'users#new'
