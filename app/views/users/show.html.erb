@@ -12,25 +12,30 @@
 
     <ul class="nav nav-tabs" style="margin-top:20px;">
       <li role="presentation" class="active"><a href="#tab1" data-toggle="tab">ツイート(<%= @user.microposts.count %>)</a></li>
-      <li role="presentation"><a href="#tab2" data-toggle="tab">フォロー</a></li>
-      <li role="presentation"><a href="#tab3" data-toggle="tab">フォロワー</a></li>
+      <li role="presentation"><a href="#tab2" data-toggle="tab">フォロー(<%= @following_users.count %>)</a></li>
+      <li role="presentation"><a href="#tab3" data-toggle="tab">フォロワー(<%= @follower_users.count %>)</a></li>
     </ul>    
     <div id="myTabContent" class="tab-content">
       <div class="tab-pane fade in active" id="tab1">
         <% #micropostsがある時に表示 %>
         <% if @user.microposts.any? %>
           <ol class="microposts">
-            <%= render @microposts %>
+            <% # 別フォルダの部分テンプレートを参照 %>
+            <%= render :partial => "microposts/micropost", :collection => @microposts %>
           </ol>
         <% else %>
           <p>まだツイートがありません</p>
         <% end %>
       </div>
       <div class="tab-pane fade" id="tab2">
-          <p>コンテンツ2</p>
+        <ol class="follow-users">
+          <%= render :partial => "follow_users", :collection => @following_users, :as => "follow_user" %>
+        </ol>
       </div>
       <div class="tab-pane fade" id="tab3">
-          <p>コンテンツ3</p>
+        <ol class="follow-users">
+          <%= render :partial => "follow_users", :collection => @follower_users, :as => "follow_user" %>
+        </ol>
       </div>
     </div>
 </div>

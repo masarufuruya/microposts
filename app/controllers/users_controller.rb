@@ -6,6 +6,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
+    #一旦showにまとめる
+    @following_users = @user.following_users
+    @follower_users = @user.follower_users
   end
   
   #ユーザー新規登録
