@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   resources :microposts
   resources :users
+  resources :relationships, only: [:create, :destroy]
   
   get 'signup', to: 'users#new'
   get    'login' , to: 'sessions#new'
