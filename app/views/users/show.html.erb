@@ -29,7 +29,7 @@
     <% elsif params[:action] == 'following_users' %>
       <h3>フォロー中のユーザー</h3>
       <% if @following_users.any? %>
-        <ol class="microposts">
+        <ol class="users">
           <% # モデルの中身で参照する。users/_user.html.erbが参照される。変数名は関係なし %>
           <%= render @following_users %>
         </ol>
@@ -39,7 +39,7 @@
     <% else %>
       <h3>フォローされているユーザー</h3>
       <% if @follower_users.any? %>
-        <ol class="microposts">
+        <ol class="users">
           <%= render @follower_users %>
         </ol>
       <% else %>
