@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :redirect_unlogged_user, only: [:show, :edit, :update]
   #自分以外のユーザーが編集できないようにする
   before_action :forbid_other_user_edit, only: [:edit, :update]
-  
+
   def new
     @user = User.new
   end
@@ -12,18 +12,19 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @microposts = @user.microposts.order(created_at: :desc)
-    @following_users = @user.following_users
-    @follower_users = @user.follower_users
   end
   
   def following_users
     @user = User.find(params[:id])
     @following_users = @user.following_users
+    #showと同じテンプレートを返す
+    render 'show'
   end
   
   def follower_users
     @user = User.find(params[:id])
-    @following_users = @user.follower_users
+    @follower_users = @user.follower_users
+    render 'show'
   end
   
   def edit
