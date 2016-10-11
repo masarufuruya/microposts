@@ -1,6 +1,4 @@
-<% #タイムラインの投稿が存在するか %>
-<% if feed_items.any? %>
 <ol class="microposts">
+    <% #中身はMicroPostモデルなので_micropost.html.erbが使われる %>
     <%= render feed_items %>
 </ol>
-<% end %>

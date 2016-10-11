@@ -8,6 +8,15 @@
         <%= render 'shared/micropost_form' %>
       </section>
     </aside>
+    <div class="col-md-8">
+      <% if @feed_items.any? %>
+        <h3>MicroPost Feed</h3>
+        <!--<%= render 'shared/feed', feed_items: @feed_items %>-->
+        <% #partialを省略する場合はlocalsも省略する %>
+        <% #コントローラーに依存しないように部分テンプレートにはインスタンス変数は渡さない %>
+        <%= render partial: 'shared/feed', locals: { feed_items: @feed_items } %>
+      <% end %>
+    </div>
   </div>
 <% else %>
   <div class="center jumbotron">
