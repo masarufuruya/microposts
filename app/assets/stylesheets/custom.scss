@@ -304,6 +304,11 @@ aside {
     float: left;
     margin-right: 5px;
   }
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 }
 
 .users {

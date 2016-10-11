@@ -10,6 +10,7 @@
         <li><%= link_to "フォロー", following_users_user_path(@user) %></li>
         <li><%= link_to "フォロワー", follower_users_user_path(@user) %></li>
       </ul>
+      <p><%= @user.description %></p>
     </section>
   </aside>
   <div class="col-md-8">
