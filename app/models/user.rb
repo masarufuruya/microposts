@@ -23,19 +23,19 @@ class User < ActiveRecord::Base
     has_many :follower_relationships, :class_name => "Relationship", :foreign_key => "followed_id", dependent: :destroy
     
     # RelationShipを通して2つのUserを相互に関連付けるには？
-    # A.:through =>:中間クラス名と:source=>:所有するクラス名
-    has_many :following_users, :through => :following_relationships, :source => :followed
-    has_many :follower_users, :through => :follower_relationships, :source => :follower
+    # A.:through =>:中間クラス名と:source=>:中間クラスを通して参照する参照名(belongs_toで自由につけられる。その場合は外部キーを自分で指定する)
+    has_many :following_users, :through => :following_relationships, :source => :followed_user
+    has_many :follower_users, :through => :follower_relationships, :source => :follower_user
     
     def follow(other_user)
-        #検索条件で指定してはじめの1件を取得し,1件もなければ作成する
-        #follower_idは？
+        #現在のユーザーが指定ユーザーをフォローしていない場合はフォロー
         following_relationships.find_or_create_by(followed_id: other_user.id)
     end
     
     def unfollow(other_user)
-        following_relationship = follower_relationships.find_by(followed_id: other_user.id)
-        follower_relationship.destroy if following_relationship
+        #現在のユーザーがフォローしているユーザーから指定ユーザーをアンフォロー
+        following_relationship = following_relationships.find_by(followed_id: other_user.id)
+        following_relationship.destroy if following_relationship
     end
     
     #あるユーザーをフォローしているかどうか

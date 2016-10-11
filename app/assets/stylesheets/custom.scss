@@ -15,6 +15,11 @@ textarea {
   resize: vertical;
 }
 
+p {
+  margin: 0;
+  padding: 0;
+}
+
 .center {
   text-align: center;
 }
@@ -52,6 +57,11 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+}
+
+ol, li {
+  list-style: none;
+  padding: 0;
 }
 
 /* header */
@@ -269,5 +279,40 @@ aside {
   textarea {
     height: 100px;
     margin-bottom: 5px;
+  }
+}
+
+.follow-users {
+  li {
+    height: 100px;
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .gravatar {
+    float: left;
+    margin-right: 10px;
+    margin-top: 5px;
+  }
+}
+
+.follow-list {
+  li {
+    float: left;
+    margin-right: 5px;
+  }
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+.users {
+  li {
+    height: 75px;
   }
 }
