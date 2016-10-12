@@ -8,9 +8,14 @@
   <span class="timestamp">
     Posted <%= time_ago_in_words(micropost.created_at) %> ago.
   </span>
+  <% #あとでajax化する %>
   <% if current_user == micropost.user %>
     <%= link_to "削除する", micropost_path(micropost), method: :delete, data: { confirm: "この投稿を削除してよろしいですか？" } %>
+  <% end %>
+  <%= link_to "リツイートする", retweet_micropost_path(micropost), method: :post, data: { confirm: "この投稿をリツイートしてよろしいですか？" } %>
+  <% if micropost.is_favorited == false %>
+    <%= link_to "お気に入りする", favorite_micropost_path(micropost), method: :patch, data: { confirm: "この投稿をお気に入りしてよろしいですか？" } %>
   <% else %>
-    <%= link_to "リツイートする", retweet_micropost_path(micropost), method: :post, data: { confirm: "この投稿をリツイートしてよろしいですか？" } %>
+    <%= link_to "お気に入りを解除する", unfavorite_micropost_path(micropost), method: :patch, data: { confirm: "この投稿のお気に入りを解除してよろしいですか？" } %>
   <% end %>
 </li>

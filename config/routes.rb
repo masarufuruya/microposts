@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :microposts do
     member do
       post 'retweet'
+      patch 'favorite'
+      patch 'unfavorite'
     end
   end
   

@@ -47,7 +47,27 @@ class MicropostsController < ApplicationController
     end
     
     def favorite
-      #お気に入りされているかどうか
+      # is_favoritedがtrue お気に入り
+      post = Micropost.find(params[:id])
+      # UPDATE posts SET is_favorited = true, updated_at = xx where posts.id = xx
+      if post.update(is_favorited: true)
+        flash[:success] = "お気に入りしました"
+        redirect_to root_url
+      else
+        flash[:danger] = "お気に入りに失敗しました"
+        redirect_to :back
+      end
+    end
+    
+    def unfavorite
+      post = Micropost.find(params[:id])
+      if post.update(is_favorited: false)
+        flash[:success] = "お気に入りを解除しました"
+        redirect_to root_url
+      else
+        flash[:danger] = "お気に入りの解除に失敗しました"
+        redirect_to :back
+      end
     end
     
     private
