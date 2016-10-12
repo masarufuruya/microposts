@@ -5,4 +5,8 @@ class Micropost < ActiveRecord::Base
   validates :content, presence: true, length: { maximum: 140 }
   
   paginates_per 5
+  
+  def favorite?(user)
+    likes.where(user_id: user.id).any?
+  end
 end
