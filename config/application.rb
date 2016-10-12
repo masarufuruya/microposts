@@ -31,5 +31,7 @@ module Microposts
     end
     
     config.action_view.embed_authenticity_token_in_remote_forms = true
+    #ロケールを日本語設定
+    config.i18n.default_locale = :ja
   end
 end
