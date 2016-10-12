@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161012053140) do
+ActiveRecord::Schema.define(version: 20161012080442) do
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "issueable_id"
+    t.string   "issueable_type"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "microposts", force: :cascade do |t|
     t.integer  "user_id"
