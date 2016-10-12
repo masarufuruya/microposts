@@ -16,6 +16,7 @@
         <% #コントローラーに依存しないように部分テンプレートにはインスタンス変数は渡さない %>
         <%= render partial: 'shared/feed', locals: { feed_items: @feed_items } %>
       <% end %>
+      <%= paginate @feed_items %>
     </div>
   </div>
 <% else %>

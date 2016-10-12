@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   get 'sessions/new'
 
-  resources :microposts
+  resources :microposts do
+    member do
+      post 'retweet'
+    end
+  end
+  
   resources :users do
     # users/1/following_users
     # users/1/follower_users

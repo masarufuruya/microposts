@@ -11,19 +11,20 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.order(created_at: :desc)
+    # @microposts = @user.microposts.order(created_at: :desc)
+    @microposts = @user.microposts.page(params[:page]).order(created_at: :desc)
   end
   
   def following_users
     @user = User.find(params[:id])
-    @following_users = @user.following_users
+    @following_users = @user.following_users.page(params[:page]).per(5)
     #showと同じテンプレートを返す
     render 'show'
   end
   
   def follower_users
     @user = User.find(params[:id])
-    @follower_users = @user.follower_users
+    @follower_users = @user.follower_users.page(params[:page]).per(5)
     render 'show'
   end
   

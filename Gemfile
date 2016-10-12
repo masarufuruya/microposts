@@ -48,3 +48,4 @@ group :development do
 end
 
 gem 'pry-byebug'
+gem 'kaminari'

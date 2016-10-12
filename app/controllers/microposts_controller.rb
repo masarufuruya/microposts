@@ -28,8 +28,30 @@ class MicropostsController < ApplicationController
         end
     end
     
+    def retweet
+      #元の投稿を取得
+      #実行時にオープンされる(事前に読み込まない)
+      origin_post = Micropost.find(params[:id])
+      retweet = current_user.microposts.build(origin_user_id: origin_post.id)
+      #.xxxが一般的
+      retweet.content = origin_post[:content]
+      
+      if retweet.save
+        flash[:success] = "リツイートしました"
+        redirect_to root_url
+      else
+        flash[:danger] = "リツイートに失敗しました"
+        #色々な所で呼ばれるので、実行元へ戻す
+        redirect_to :back
+      end
+    end
+    
+    def favorite
+      #お気に入りされているかどうか
+    end
+    
     private
         def micropost_params
-            params.require(:micropost).permit(:content)
+          params.require(:micropost).permit(:content)
         end
 end

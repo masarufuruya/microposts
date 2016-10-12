@@ -23,6 +23,7 @@
           <% # 別フォルダの部分テンプレートを参照 %>
           <% # collectionのモデルの内容をみて部分テンプレートに展開される %>
           <%= render @microposts %>
+          <%= paginate @microposts %>
         </ol>
       <% else %>
         <p>まだツイートがありません</p>
@@ -33,6 +34,7 @@
         <ol class="users">
           <% # モデルの中身で参照する。users/_user.html.erbが参照される。変数名は関係なし %>
           <%= render @following_users %>
+          <%= paginate @following_users %>
         </ol>
       <% else %>
         <p>まだフォロー中のユーザーはいません</p>
@@ -42,6 +44,7 @@
       <% if @follower_users.any? %>
         <ol class="users">
           <%= render @follower_users %>
+          <%= paginate @follower_users %>
         </ol>
       <% else %>
         <p>まだフォローされているのユーザーはいません</p>
