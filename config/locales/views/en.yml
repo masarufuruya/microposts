@@ -1,0 +1,10 @@
+en:
+  navigation:
+    home: 'Home'
+    help: 'Help'
+    account: 'Account'
+    profile: 'Profile'
+    setting: 'Setting'
+    logout: 'Logout'
+    
+      

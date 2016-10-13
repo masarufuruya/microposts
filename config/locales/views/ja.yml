@@ -1,0 +1,18 @@
+ja:
+  navigation:
+    home: 'ホーム'
+    help: 'ヘルプ'
+    account: 'アカウント'
+    profile: 'プロフィール'
+    setting: '設定'
+    logout: 'ログアウト'
+    
+  static_pages:
+    home:
+      profile:
+        link: 'プロフィールを表示'
+        post_count: '投稿'
+      timeline:
+        title: 'フィード'
+    
+      
