@@ -1,0 +1,4 @@
+ja:
+  sessions_controller:
+    create:
+      flash_success: "%{name}としてログインしました"

@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     # 認証成功なら
     if @user && @user.authenticate(params[:session][:password])
       session[:user_id] = @user.id
-      flash[:info] = "logged in as #{@user.name}"
+      flash[:info] = t('.flash_success', name: @user.name)
       redirect_to @user
     else
       flash[:danger] = "invalid email/password combination"

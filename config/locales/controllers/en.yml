@@ -1,0 +1,5 @@
+en:
+  #ja側と構成あってなくてもOK
+  sessions_controller:
+    create:
+      flash_success: "logged as %{user_name}"

@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
   # モジュールをinclude
   include SessionsHelper
   
+  def t(key, options={})
+    if key[0] == '.'
+      key = controller_name + "_controller." + action_name + key
+    end
+    super
+  end
+  
   private 
     def logged_in_user
       #ログインしていない
