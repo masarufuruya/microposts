@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     member do
       get 'following_users'
       get 'follower_users'
+      get 'favorites'
     end
   end
   

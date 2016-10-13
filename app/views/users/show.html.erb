@@ -9,6 +9,7 @@
         <li><%= link_to "ツイート", user_path(@user) %></li>
         <li><%= link_to "フォロー", following_users_user_path(@user) %></li>
         <li><%= link_to "フォロワー", follower_users_user_path(@user) %></li>
+        <li><%= link_to "お気に入りツイート", favorites_user_path(@user) %></li>
       </ul>
       <p><%= @user.description %></p>
     </section>
@@ -35,6 +36,16 @@
           <% # モデルの中身で参照する。users/_user.html.erbが参照される。変数名は関係なし %>
           <%= render @following_users %>
           <%= paginate @following_users %>
+        </ol>
+      <% else %>
+        <p>まだフォロー中のユーザーはいません</p>
+      <% end %>
+    <% elsif params[:action] == 'favorites' %>
+      <h3>お気に入りツイート一覧</h3>
+      <% if @favorites.any? %>
+        <ol class="microposts">
+          <%= render @favorites %>
+          <%= paginate @favorites %>
         </ol>
       <% else %>
         <p>まだフォロー中のユーザーはいません</p>

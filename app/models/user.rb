@@ -12,7 +12,9 @@ class User < ActiveRecord::Base
     validates :description, length: { maximum: 255 }
     has_secure_password
     has_many :microposts
-    has_many :likes
+    
+    has_many :likes, dependent: :destroy
+    has_many :like_posts, through: :likes, source: :issueable, source_type: 'Micropost'
 
     # has_many :throughの関連に同一モデルを含む場合
     # User > RelationShip > User

@@ -15,6 +15,12 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.page(params[:page]).order(created_at: :desc)
   end
   
+  def favorites
+    @user = User.find(params[:id])
+    @favorites = @user.like_posts.page(params[:page]).order(created_at: :desc)
+    render 'show'
+  end
+  
   def following_users
     @user = User.find(params[:id])
     @following_users = @user.following_users.page(params[:page]).per(5)
