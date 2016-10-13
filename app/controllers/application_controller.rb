@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
       #ログインしていない
       unless logged_in?
         store_location
-        flash[:danger] = "Please log in."
+        flash[:danger] = t('application_controller.private.logged_in_user')
         redirect_to login_url
       end
     end

@@ -1,5 +1,7 @@
 en:
-  #ja側と構成あってなくてもOK
+  application_controller: 
+    private:
+      logged_in_user: "Please login."
   sessions_controller:
     create:
-      flash_success: "logged as %{user_name}"
+      flash_success: "logged as %{user_name}."

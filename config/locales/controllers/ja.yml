@@ -1,4 +1,7 @@
 ja:
+  application_controller: 
+    private:
+      logged_in_user: "ログインしてください"
   sessions_controller:
     create:
       flash_success: "%{name}としてログインしました"
